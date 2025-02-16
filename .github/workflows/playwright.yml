@@ -1,4 +1,5 @@
 name: Playwright Tests
+run: xvfb-run --auto-servernum npx playwright test
 
 on:
   push:
