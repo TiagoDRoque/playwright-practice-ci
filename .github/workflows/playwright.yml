@@ -2,13 +2,9 @@ name: Playwright Tests
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [main]
   pull_request:
-    branches:
-      - main
-      - master
+    branches: [main]
 
 jobs:
   test:
@@ -35,12 +31,8 @@ jobs:
         run: xvfb-run --auto-servernum npx playwright test
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-          USER_REGIONAL: ${{ secrets.USER_REGIONAL }}
-          REGIONAL_PASSWORD: ${{ secrets.REGIONAL_PASSWORD }}
-          USER_LAB: ${{ secrets.USER_LAB }}
-          LAB_PASSWORD: ${{ secrets.LAB_PASSWORD }}
-          USER_SALES: ${{ secrets.USER_SALES }}
-          SALES_PASSWORD: ${{ secrets.SALES_PASSWORD }}
+          STANDARD_USER: ${{ secrets.STANDARD_USER }}
+          PASSWORD: ${{ secrets.PASSWORD }}
 
       - name: Upload Playwright Report
         uses: actions/upload-artifact@v4
