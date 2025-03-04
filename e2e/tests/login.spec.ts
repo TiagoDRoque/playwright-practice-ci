@@ -17,8 +17,8 @@ test('TC-002: Verify that a "Locked_out_user" cannot access the homepage', async
     await page.fill('#user-name', process.env.LOCKED_OUT_USER as string);
     await page.fill('#password', process.env.PASSWORD as string);
     await page.click('#login-button');
-    await page.waitForSelector('.error-button', { timeout: 10000 });
-    const errorButton = await page.isVisible('.error-button');
+    await page.waitForSelector('xpath=//*[@id="login_button_container"]/div/form/div[3]/h3', { state: 'visible' });
+    const errorButton = await page.isVisible('xpath=//*[@id="login_button_container"]/div/form/div[3]/h3');
     expect(errorButton).toBeTruthy();
 });
 test('TC-003: Verify that a "Problem_user" can access the homepage', async ({ page }) => {
@@ -30,3 +30,4 @@ test('TC-003: Verify that a "Problem_user" can access the homepage', async ({ pa
     const url = page.url();
     expect(url).toBe('https://www.saucedemo.com/inventory.html')
 });
+
